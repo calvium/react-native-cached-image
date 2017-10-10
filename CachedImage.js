@@ -86,7 +86,7 @@ const CachedImage = createReactClass({
 
     componentWillMount() {
         this._isMounted = true;
-        NetInfo.isConnected.addEventListener('change', this.handleConnectivityChange);
+        NetInfo.isConnected.addEventListener('connectionChange', this.handleConnectivityChange);
         // initial
         NetInfo.isConnected.fetch()
             .then(isConnected => {
@@ -100,7 +100,7 @@ const CachedImage = createReactClass({
 
     componentWillUnmount() {
         this._isMounted = false;
-        NetInfo.isConnected.removeEventListener('change', this.handleConnectivityChange);
+        NetInfo.isConnected.removeEventListener('connectionChange', this.handleConnectivityChange);
     },
 
     componentWillReceiveProps(nextProps) {
